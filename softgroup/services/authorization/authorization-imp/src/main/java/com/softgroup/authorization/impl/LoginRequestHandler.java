@@ -16,6 +16,11 @@ public class LoginRequestHandler
         extends AbstractRequestHandler<LoginRequest, LoginResponse>
         implements AuthorizationRequestHandler {
 
+    @Override
+    public String getName() {
+        return "login";
+    }
+
     public Response<LoginResponse> doHandle(Request<LoginRequest> msg) {
         Response<LoginResponse> resp = new Response<LoginResponse>();
         resp.setHeader(msg.getHeader());

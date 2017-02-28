@@ -11,10 +11,8 @@ import com.softgroup.common.protocol.ResponseData;
 import java.util.Map;
 
 public abstract class AbstractRequestHandler<T extends RequestData, R extends ResponseData> implements RequestHandler {
-	@Override
-	public String getName() {
-		return null;
-	}
+
+	public abstract String getName();
 
 	public abstract Response<R> doHandle(Request<T> msg);
 

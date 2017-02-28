@@ -21,7 +21,7 @@ public abstract class AbstractRouterHandler<F extends HandlerFactory<? extends H
 		if (handler != null) {
 			return handler.handle(msg);
 		}
-		return null;
+		return null;//TODO: return error{bad request}
 	}
 
 }
