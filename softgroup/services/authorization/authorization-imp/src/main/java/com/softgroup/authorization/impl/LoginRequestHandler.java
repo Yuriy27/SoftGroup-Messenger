@@ -27,7 +27,7 @@ public class LoginRequestHandler
         LoginResponse loginResponse = new LoginResponse();
         loginResponse.setToken("some token");
         resp.setData(new LoginResponse());
-        return null;
+        return resp;
     }
 
 }
