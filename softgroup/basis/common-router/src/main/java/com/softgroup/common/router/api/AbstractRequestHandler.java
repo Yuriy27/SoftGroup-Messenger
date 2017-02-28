@@ -16,11 +16,11 @@ public abstract class AbstractRequestHandler<T extends RequestData, R extends Re
 		return null;
 	}
 
-	abstract Response<R> doHandle(Request<T> msg);
+	public abstract Response<R> doHandle(Request<T> msg);
 
 	@Override
 	public Response<R> handle(Request<?> msg) {
-		DataMapper mapper = new JacksonDataMapper();
+		JacksonDataMapper mapper = new JacksonDataMapper();
 		Map<String, Object> map = mapper.convertToMap(msg);
 		RequestData data = mapper.convert(map, RequestData.class);
 		Request<T> converted = new Request<>();

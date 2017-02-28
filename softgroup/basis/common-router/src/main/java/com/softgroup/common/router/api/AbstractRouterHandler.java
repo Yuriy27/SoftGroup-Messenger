@@ -9,28 +9,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public abstract class AbstractRouterHandler<T extends Handler> implements RouterHandler {
+public abstract class AbstractRouterHandler<F extends HandlerFactory<? extends Handler>>
+		implements RouterHandler {
 
 	@Autowired
-	private List<T> handlers;
-
-	private Map<String, T> handlerMap = new HashMap<>();
-
-	@PostConstruct
-	public void init() {
-		for (T handler : handlers) {
-			handlerMap.put(handler.getName(), handler);
-		}
-	}
-
-	@Override
-	public String getRouteKey(Request<?> msg) {
-		return null;
-	}
+	private F handlerFactory;
 
 	@Override
 	public Response<?> handle(Request<?> msg) {
-		return handlerMap.get(getRouteKey(msg)).handle(msg);
+		Handler handler = handlerFactory.getHandler(msg);
+		if (handler != null) {
+			return handler.handle(msg);
+		}
+		return null;
 	}
 
 }
