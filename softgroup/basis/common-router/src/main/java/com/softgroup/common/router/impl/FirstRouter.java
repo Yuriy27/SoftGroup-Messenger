@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * Created by yuriy on 28.02.17.
  */
 @Component
-public class MainRouter
+public class FirstRouter
         extends AbstractRouterHandler<RouterHandlerFactory<CommonRouterHandler>>
         implements RouterHandler {
 

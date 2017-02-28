@@ -26,7 +26,7 @@ public class LoginRequestHandler
         resp.setHeader(msg.getHeader());
         LoginResponse loginResponse = new LoginResponse();
         loginResponse.setToken("some token");
-        resp.setData(new LoginResponse());
+        resp.setData(loginResponse);
         return resp;
     }
 

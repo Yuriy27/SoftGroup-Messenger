@@ -12,13 +12,16 @@ import java.util.Map;
 
 public abstract class AbstractRequestHandler<T extends RequestData, R extends ResponseData> implements RequestHandler {
 
-	public abstract String getName();
+	DataMapper mapper = new JacksonDataMapper();
+
+	public String getName() {
+		return null;
+	}
 
 	public abstract Response<R> doHandle(Request<T> msg);
 
 	@Override
 	public Response<R> handle(Request<?> msg) {
-		JacksonDataMapper mapper = new JacksonDataMapper();
 		Map<String, Object> map = mapper.convertToMap(msg);
 		RequestData data = mapper.convert(map, RequestData.class);
 		Request<T> converted = new Request<>();
