@@ -1,7 +1,7 @@
 package com.softgroup.profile.api.message;
 
 import com.softgroup.common.protocol.RequestData;
-import com.softgroup.profile.api.message.model.ProfileSettings;
+import com.softgroup.profile.model.ProfileSettings;
 
 /**
  * Created by yuriy on 24.02.17.
