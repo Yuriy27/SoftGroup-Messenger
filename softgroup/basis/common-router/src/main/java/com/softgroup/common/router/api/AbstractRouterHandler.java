@@ -1,13 +1,10 @@
 package com.softgroup.common.router.api;
 
+import com.softgroup.common.factory.api.AbstractHandlerFactory;
+import com.softgroup.common.factory.api.HandlerFactory;
 import com.softgroup.common.protocol.Request;
 import com.softgroup.common.protocol.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.annotation.PostConstruct;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public abstract class AbstractRouterHandler<F extends HandlerFactory<? extends Handler>>
 		implements RouterHandler {

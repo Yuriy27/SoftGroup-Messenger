@@ -2,12 +2,8 @@ package com.softgroup.authorization.impl;
 
 import com.softgroup.authorization.api.router.AuthorizationRequestHandler;
 import com.softgroup.authorization.api.router.AuthorizationRouterHandler;
-import com.softgroup.common.protocol.Request;
 import com.softgroup.common.router.api.AbstractRouterHandler;
-import com.softgroup.common.router.api.Handler;
-import com.softgroup.common.router.api.HandlerFactory;
-import com.softgroup.common.router.impl.RequestHandlerFactory;
-import com.softgroup.common.router.impl.RouterHandlerFactory;
+import com.softgroup.common.factory.api.RequestHandlerFactory;
 import org.springframework.stereotype.Component;
 
 /**
