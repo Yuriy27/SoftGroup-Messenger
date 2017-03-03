@@ -1,7 +1,7 @@
 package com.softgroup.profile.api.message;
 
 import com.softgroup.common.protocol.RequestData;
-import com.softgroup.profile.api.message.model.Contact;
+import com.softgroup.profile.model.Contact;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.softgroup.profile.api.message.model;
+package com.softgroup.profile.model;
 
 /**
  * Created by yuriy on 24.02.17.
