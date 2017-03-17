@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MainController {
 
     @Autowired
-    JacksonDataMapper dataMapper;
+    DataMapper dataMapper;
 
     @Autowired
     FirstRouter firstRouter;

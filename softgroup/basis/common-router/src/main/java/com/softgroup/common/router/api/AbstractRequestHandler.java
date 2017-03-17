@@ -17,6 +17,10 @@ import java.util.Map;
 public abstract class AbstractRequestHandler<T extends RequestData, R extends ResponseData>
 		implements RequestHandler {
 
+	private final Class<T> parameter = (Class<T>)((ParameterizedType) getClass()
+			.getGenericSuperclass())
+			.getActualTypeArguments()[0];
+
 	@Autowired
 	DataMapper mapper;
 
@@ -26,9 +30,6 @@ public abstract class AbstractRequestHandler<T extends RequestData, R extends Re
 	public Response<R> handle(Request<?> msg) {
 		Request<T> converted = new Request<>();
 		converted.setHeader(msg.getHeader());
-
-		ParameterizedType type = (ParameterizedType) getClass().getGenericSuperclass();
-		Class<T> parameter = (Class<T>) type.getActualTypeArguments()[0];
 		converted.setData(mapper.convert((Map<String, Object>) msg.getData(), parameter));
 
 		return doHandle(converted);
