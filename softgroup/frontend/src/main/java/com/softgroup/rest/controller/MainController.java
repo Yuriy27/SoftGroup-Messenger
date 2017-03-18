@@ -26,8 +26,6 @@ public class MainController {
     @RequestMapping(value = "/route", method = RequestMethod.POST)
     public String processRequest(@RequestBody String body) {
         FrontRequest request = dataMapper.mapData(body, FrontRequest.class);
-        //AuthorizationRouter a;
-        //System.out.println("[Yurez::LOG] in request mapping");
         return dataMapper.objectToString(firstRouter.handle(request));
     }
 

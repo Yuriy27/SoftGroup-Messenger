@@ -1,8 +1,6 @@
 package com.softgroup.common.router.api;
 
-import com.softgroup.common.factory.api.AbstractHandlerFactory;
-import com.softgroup.common.factory.api.HandlerFactory;
-import com.softgroup.common.factory.impl.RequestHandlerFactoryImpl;
+import com.softgroup.common.router.factory.api.HandlerFactory;
 import com.softgroup.common.protocol.Request;
 import com.softgroup.common.protocol.Response;
 import org.springframework.beans.factory.annotation.Autowired;

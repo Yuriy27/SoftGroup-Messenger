@@ -1,4 +1,4 @@
-package com.softgroup.common.factory.api;
+package com.softgroup.common.router.factory.api;
 
 import com.softgroup.common.protocol.Request;
 import com.softgroup.common.router.api.Handler;
@@ -6,7 +6,7 @@ import com.softgroup.common.router.api.Handler;
 /**
  * Created by yuriy on 14.03.17.
  */
-public interface HandlerFactory<T extends Handler> {
+public interface HandlerFactory {
 
     Handler getHandler(Request<?> msg);
 
