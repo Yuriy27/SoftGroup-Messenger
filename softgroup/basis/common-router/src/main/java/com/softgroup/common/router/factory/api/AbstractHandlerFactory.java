@@ -1,4 +1,4 @@
-package com.softgroup.common.factory.api;
+package com.softgroup.common.router.factory.api;
 
 import com.softgroup.common.protocol.Request;
 import com.softgroup.common.router.api.Handler;
@@ -12,8 +12,7 @@ import java.util.Map;
 /**
  * Created by yuriy on 25.02.17.
  */
-public abstract class AbstractHandlerFactory<T extends Handler>
-        implements HandlerFactory<T> {
+public abstract class AbstractHandlerFactory<T extends Handler> implements HandlerFactory {
 
     @Autowired
     private List<T> handlers;
@@ -29,7 +28,6 @@ public abstract class AbstractHandlerFactory<T extends Handler>
 
     public abstract String getRouteKey(Request<?> msg);
 
-    @Override
     public Handler getHandler(Request<?> msg) {
         return handlerMap.get(getRouteKey(msg));
     }

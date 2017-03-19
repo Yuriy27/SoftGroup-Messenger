@@ -1,9 +1,7 @@
 package com.softgroup.common.router.impl;
 
-import com.softgroup.common.factory.api.RouterHandlerFactory;
-import com.softgroup.common.factory.impl.RouterHandlerFactoryImpl;
+import com.softgroup.common.router.factory.impl.FirstHandlerFactory;
 import com.softgroup.common.router.api.AbstractRouterHandler;
-import com.softgroup.common.router.api.CommonRouterHandler;
 import com.softgroup.common.router.api.RouterHandler;
 import org.springframework.stereotype.Component;
 
@@ -12,10 +10,11 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class FirstRouter
-        extends AbstractRouterHandler<RouterHandlerFactory<CommonRouterHandler>>
+        extends AbstractRouterHandler<FirstHandlerFactory>
         implements RouterHandler {
 
     public String getName() {
         return "first";
     }
+
 }

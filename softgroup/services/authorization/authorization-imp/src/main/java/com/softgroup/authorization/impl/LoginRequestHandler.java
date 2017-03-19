@@ -16,7 +16,6 @@ public class LoginRequestHandler
         extends AbstractRequestHandler<LoginRequest, LoginResponse>
         implements AuthorizationRequestHandler {
 
-    @Override
     public String getName() {
         return "login";
     }

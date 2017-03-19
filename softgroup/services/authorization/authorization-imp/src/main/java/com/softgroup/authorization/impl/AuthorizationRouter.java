@@ -1,9 +1,7 @@
 package com.softgroup.authorization.impl;
 
-import com.softgroup.authorization.api.router.AuthorizationRequestHandler;
-import com.softgroup.authorization.api.router.AuthorizationRouterHandler;
 import com.softgroup.common.router.api.AbstractRouterHandler;
-import com.softgroup.common.factory.api.RequestHandlerFactory;
+import com.softgroup.common.router.api.CommonRouterHandler;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,8 +9,8 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class AuthorizationRouter
-        extends AbstractRouterHandler<RequestHandlerFactory<AuthorizationRequestHandler>>
-        implements AuthorizationRouterHandler {
+        extends AbstractRouterHandler<AuthorizationHandlerFactory>
+        implements CommonRouterHandler {
 
     public String getName() {
         return "authorization";

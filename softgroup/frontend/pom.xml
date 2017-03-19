@@ -7,9 +7,8 @@
 		<artifactId>softgroup</artifactId>
 		<version>0.0.1</version>
 	</parent>
-
 	<artifactId>frontend</artifactId>
-	<packaging>pom</packaging>
+	<packaging>war</packaging>
 
 	<modules>
 
@@ -20,5 +19,30 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
+	<dependencies>
+        <dependency>
+            <groupId>com.softgroup</groupId>
+            <artifactId>authorization-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.softgroup</groupId>
+            <artifactId>common-datamapper</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.softgroup</groupId>
+            <artifactId>common-exceptions</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.softgroup</groupId>
+            <artifactId>common-protocol</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.softgroup</groupId>
+            <artifactId>authorization-impl</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
