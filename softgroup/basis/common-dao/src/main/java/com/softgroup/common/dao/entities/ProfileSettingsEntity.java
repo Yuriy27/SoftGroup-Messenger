@@ -1,5 +1,7 @@
 package com.softgroup.common.dao.entities;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -14,6 +16,8 @@ public class ProfileSettingsEntity implements Serializable {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
 
     @Column(name = "settings_data")

@@ -13,10 +13,6 @@ import java.util.List;
 public interface ProfileRepository
         extends PagingAndSortingRepository<ProfileEntity, String> {
 
-    //List<ProfileEntity> findAll();
-
-
-
     List<ProfileEntity> findByName(String s);
 
     List<ProfileEntity> findByNameAndPhoneNumber(String name, String number);
