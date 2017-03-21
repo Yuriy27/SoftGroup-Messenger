@@ -15,17 +15,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {CommonDaoAppCfg.class})
-public class ProfileRepositoryTest {
-
-    @Autowired
-    ProfileRepository repository;
+public class ProfileServiceTest {
 
     @Autowired
     ProfileService service;
 
     @Test
     public void test1() {
-        //System.out.println(repository.findByName("NonoYuriy"));
         ProfileEntity entity = new ProfileEntity();
         entity.setAvatarUri("uir");
         entity.setCreateDateTime(9990l);
@@ -34,7 +30,6 @@ public class ProfileRepositoryTest {
         entity.setStatus("status");
         entity.setUpdateDateTime(90l);
         service.save(entity);
-        //System.out.println(repository.findAll());
     }
 
 }
