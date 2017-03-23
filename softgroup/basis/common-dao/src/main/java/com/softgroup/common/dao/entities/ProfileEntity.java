@@ -1,5 +1,6 @@
 package com.softgroup.common.dao.entities;
 
+import com.softgroup.common.dao.api.BaseEntity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -11,15 +12,11 @@ import java.util.List;
  */
 @Entity
 @Table(name = "profiles")
-public class ProfileEntity implements Serializable {
+public class ProfileEntity
+        extends BaseEntity
+        implements Serializable {
 
     private static final long serialVersionUID = 2645460488213358603L;
-
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    private String id;
 
     @Column(name = "phone_number")
     private String phoneNumber;
@@ -41,14 +38,6 @@ public class ProfileEntity implements Serializable {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "profile")
     private List<ProfileSettingsEntity> settingsEntities;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getPhoneNumber() {
         return phoneNumber;

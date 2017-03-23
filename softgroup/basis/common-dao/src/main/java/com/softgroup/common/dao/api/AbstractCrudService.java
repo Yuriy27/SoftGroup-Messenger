@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by yuriy on 21.03.17.
  */
-public class AbstractCrudService<T, ID extends Serializable, R extends PagingAndSortingRepository<T, ID>> {
+public class AbstractCrudService<T, R extends CommonBaseRepository<T>> {
 
     @Autowired
     private R repository;
@@ -27,7 +27,7 @@ public class AbstractCrudService<T, ID extends Serializable, R extends PagingAnd
         return repository.save(entity);
     }
 
-    public T findOne(ID id) {
+    public T findOne(String id) {
         return repository.findOne(id);
     }
 
@@ -35,7 +35,7 @@ public class AbstractCrudService<T, ID extends Serializable, R extends PagingAnd
         repository.delete(entity);
     }
 
-    public void delete(ID id) {
+    public void delete(String id) {
         repository.delete(id);
     }
 
