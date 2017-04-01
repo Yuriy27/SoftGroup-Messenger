@@ -16,6 +16,7 @@
         <module>common-protocol</module>
         <module>common-utils</module>
         <module>common-dao</module>
+        <module>common-token</module>
 
     </modules>
 
