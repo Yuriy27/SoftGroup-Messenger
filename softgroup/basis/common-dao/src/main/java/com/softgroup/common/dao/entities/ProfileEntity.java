@@ -94,5 +94,4 @@ public class ProfileEntity
     public void setSettingsEntities(ProfileSettingsEntity settingsEntity) {
         this.settingsEntity = settingsEntity;
     }
-
 }
