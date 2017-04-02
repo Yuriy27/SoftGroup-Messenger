@@ -13,8 +13,4 @@ import org.springframework.stereotype.Component;
 @Configuration
 @ComponentScan(basePackages = "com.softgroup.common.token.impl")
 public class TokenCfg {
-    @Bean
-    public TokenProvider tokenProvider() {
-        return new JwtTokenProvider();
-    }
 }
