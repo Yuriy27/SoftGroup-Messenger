@@ -20,15 +20,25 @@ public class JwtTokenProvider
 
     private static final String SECRET = "1234secret0Auth22";
 
+    private static final Long DEVICE_TOKEN_TIME = 1000l * 3600 * 24 * 365;
+
+    private static final Long SESSION_TOKEN_TIME = 1000l * 60 * 5;
+
     @Override
     public String generateToken(String deviceId, String profileId, TokenType type) {
+        long expirationTime;
+        if (type == TokenType.DEVICE) {
+            expirationTime = DEVICE_TOKEN_TIME;
+        } else {
+            expirationTime = SESSION_TOKEN_TIME;
+        }
         return Jwts.builder()
                 .signWith(SignatureAlgorithm.HS256, SECRET)
                 .claim("device_id", deviceId)
                 .claim("profile_id", profileId)
                 .claim("token_type", type)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + type.getLivingTime()))
+                .setExpiration(new Date(System.currentTimeMillis() + expirationTime))
                 .compact();
     }
 

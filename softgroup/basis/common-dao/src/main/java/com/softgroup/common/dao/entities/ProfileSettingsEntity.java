@@ -20,8 +20,7 @@ public class ProfileSettingsEntity
     @Column(name = "settings_data")
     private String settingsData;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "profile_id")
+    @OneToOne (fetch = FetchType.EAGER)
     private ProfileEntity profile;
 
     public String getSettingsData() {
