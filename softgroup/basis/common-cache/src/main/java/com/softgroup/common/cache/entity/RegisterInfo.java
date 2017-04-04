@@ -64,4 +64,16 @@ public class RegisterInfo {
     public void setDeviceId(String deviceId) {
         this.deviceId = deviceId;
     }
+
+    @Override
+    public String toString() {
+        return "RegisterInfo{" +
+                "registrationRequestUuid='" + registrationRequestUuid + '\'' +
+                ", registrationTimeOutSec=" + registrationTimeOutSec +
+                ", authCode='" + authCode + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", localeCode='" + localeCode + '\'' +
+                ", deviceId='" + deviceId + '\'' +
+                '}';
+    }
 }

@@ -17,7 +17,7 @@ public class LoadingCacheService
         implements CacheService {
 
     private static final Long MAXIMUM_CACHE_SIZE = 1000l;
-    private static final Long EXPIRE = 30l;
+    private static final Long EXPIRE = 1l;
 
     private static LoadingCache<String, RegisterInfo> cache = CacheBuilder
             .newBuilder()
@@ -26,7 +26,7 @@ public class LoadingCacheService
             .build(new CacheLoader<String, RegisterInfo>() {
                 @Override
                 public RegisterInfo load(String s) throws Exception {
-                    return null;
+                    return new RegisterInfo();
                 }
             });
 
