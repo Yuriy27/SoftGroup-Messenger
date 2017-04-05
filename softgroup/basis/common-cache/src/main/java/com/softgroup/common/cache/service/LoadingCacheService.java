@@ -37,12 +37,11 @@ public class LoadingCacheService
 
     @Override
     public RegisterInfo get(String key) {
-        RegisterInfo info = null;
         try {
-            info = cache.get(key);
+            return cache.get(key);
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-        return info;
+        return null;
     }
 }

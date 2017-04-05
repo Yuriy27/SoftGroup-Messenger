@@ -7,8 +7,6 @@ public class RegisterInfo {
 
     private String registrationRequestUuid;
 
-    private Long registrationTimeOutSec;
-
     private String authCode;
 
     private String phoneNumber;
@@ -23,14 +21,6 @@ public class RegisterInfo {
 
     public void setRegistrationRequestUuid(String registrationRequestUuid) {
         this.registrationRequestUuid = registrationRequestUuid;
-    }
-
-    public Long getRegistrationTimeOutSec() {
-        return registrationTimeOutSec;
-    }
-
-    public void setRegistrationTimeOutSec(Long registrationTimeOutSec) {
-        this.registrationTimeOutSec = registrationTimeOutSec;
     }
 
     public String getAuthCode() {
@@ -69,7 +59,6 @@ public class RegisterInfo {
     public String toString() {
         return "RegisterInfo{" +
                 "registrationRequestUuid='" + registrationRequestUuid + '\'' +
-                ", registrationTimeOutSec=" + registrationTimeOutSec +
                 ", authCode='" + authCode + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", localeCode='" + localeCode + '\'' +
