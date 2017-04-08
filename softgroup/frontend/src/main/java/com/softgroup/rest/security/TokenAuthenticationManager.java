@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 /**
  * Created by yuriy27 on 08.04.17.
  */
-@Component
 public class TokenAuthenticationManager implements AuthenticationManager {
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
