@@ -1,5 +1,6 @@
-package com.softgroup.rest.security;
+package com.softgroup.rest.security.config;
 
+import com.softgroup.rest.security.TokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

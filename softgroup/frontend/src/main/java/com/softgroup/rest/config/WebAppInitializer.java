@@ -1,6 +1,6 @@
 package com.softgroup.rest.config;
 
-import com.softgroup.rest.security.RestSecurityConfig;
+import com.softgroup.rest.security.config.RestSecurityConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
