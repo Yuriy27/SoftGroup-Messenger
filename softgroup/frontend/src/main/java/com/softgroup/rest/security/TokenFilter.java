@@ -17,6 +17,8 @@ import java.io.IOException;
  */
 public class TokenFilter extends UsernamePasswordAuthenticationFilter {
 
+
+
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         chain.doFilter(req, res);

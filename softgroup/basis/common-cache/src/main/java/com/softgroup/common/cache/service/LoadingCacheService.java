@@ -4,8 +4,9 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.softgroup.common.cache.entity.RegisterInfo;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-
+import org.slf4j.Logger;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
@@ -15,8 +16,10 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class LoadingCacheService
         implements CacheService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoadingCacheService.class);
 
     private static final Long MAXIMUM_CACHE_SIZE = 1000l;
+
     private static final Long EXPIRE = 1l;
 
     private static LoadingCache<String, RegisterInfo> cache = CacheBuilder
@@ -40,7 +43,7 @@ public class LoadingCacheService
         try {
             return cache.get(key);
         } catch (ExecutionException e) {
-            e.printStackTrace();
+            LOGGER.info("Getting key '" + key + "' failed");
         }
         return null;
     }
