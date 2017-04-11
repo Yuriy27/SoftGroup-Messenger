@@ -1,8 +1,6 @@
 package com.softgroup.rest.controller;
 
-import com.softgroup.authorization.impl.AuthorizationRouter;
 import com.softgroup.common.datamapper.DataMapper;
-import com.softgroup.common.datamapper.JacksonDataMapper;
 import com.softgroup.common.protocol.FrontRequest;
 import com.softgroup.common.router.impl.FirstRouter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +10,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Created by yuriy on 08.03.17.
+ * Created by yuriy27 on 08.04.17.
  */
 @RestController
-public class MainController {
+@RequestMapping(value = "api/private", method = RequestMethod.POST)
+public class PrivateEndpoint {
 
     @Autowired
     DataMapper dataMapper;

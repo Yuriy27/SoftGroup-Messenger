@@ -5,7 +5,6 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.softgroup.common.cache.entity.RegisterInfo;
 import org.slf4j.LoggerFactory;
-import org.slf4j.MarkerFactory;
 import org.springframework.stereotype.Component;
 import org.slf4j.Logger;
 import java.util.concurrent.ExecutionException;
