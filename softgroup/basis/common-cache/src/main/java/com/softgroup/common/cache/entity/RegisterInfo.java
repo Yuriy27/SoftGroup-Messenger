@@ -5,8 +5,6 @@ package com.softgroup.common.cache.entity;
  */
 public class RegisterInfo {
 
-    private String registrationRequestUuid;
-
     private String authCode;
 
     private String phoneNumber;
@@ -23,14 +21,6 @@ public class RegisterInfo {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getRegistrationRequestUuid() {
-        return registrationRequestUuid;
-    }
-
-    public void setRegistrationRequestUuid(String registrationRequestUuid) {
-        this.registrationRequestUuid = registrationRequestUuid;
     }
 
     public String getAuthCode() {
@@ -68,7 +58,6 @@ public class RegisterInfo {
     @Override
     public String toString() {
         return "RegisterInfo{" +
-                "registrationRequestUuid='" + registrationRequestUuid + '\'' +
                 ", authCode='" + authCode + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", localeCode='" + localeCode + '\'' +
