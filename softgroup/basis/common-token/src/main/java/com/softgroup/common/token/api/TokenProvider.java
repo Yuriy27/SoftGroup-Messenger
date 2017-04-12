@@ -1,5 +1,7 @@
 package com.softgroup.common.token.api;
 
+import com.softgroup.common.protocol.RoutedData;
+
 /**
  * Created by yuriy on 29.03.17.
  */
@@ -16,5 +18,7 @@ public interface TokenProvider {
     TokenType getTokenType(String token);
 
     Long getExpirationTime(String token);
+
+    RoutedData getRoutedData(String token) throws RuntimeException;
 
 }

@@ -1,5 +1,6 @@
 package com.softgroup.common.token.impl;
 
+import com.softgroup.common.protocol.RoutedData;
 import com.softgroup.common.token.api.TokenProvider;
 import com.softgroup.common.token.api.TokenType;
 import io.jsonwebtoken.Claims;
@@ -69,6 +70,14 @@ public class JwtTokenProvider
     @Override
     public Long getExpirationTime(String token) {
         return getClaims(token).getExpiration().getTime();
+    }
+
+    @Override
+    public RoutedData getRoutedData(String token) throws RuntimeException {
+        if (this.getTokenType(token).equals(TokenType.SESSION)) {
+            return new RoutedData(this.getProfileId(token), this.getDeviceId(token));
+        }
+        throw new RuntimeException("Not correct token");
     }
 
     private Claims getClaims(String token) {
