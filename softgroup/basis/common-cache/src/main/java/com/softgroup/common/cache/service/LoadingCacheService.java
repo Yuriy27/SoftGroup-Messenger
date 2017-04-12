@@ -43,7 +43,7 @@ public class LoadingCacheService
         try {
             return cache.get(key);
         } catch (ExecutionException e) {
-            LOGGER.error(e.getMessage());
+            LOGGER.error(e.getMessage(), e.getCause());
         }
         return null;
     }
