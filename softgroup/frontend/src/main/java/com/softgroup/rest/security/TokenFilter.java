@@ -22,6 +22,7 @@ import java.io.IOException;
 /**
  * Created by yuriy27 on 08.04.17.
  */
+@Component
 public class TokenFilter extends UsernamePasswordAuthenticationFilter {
 
     @Autowired

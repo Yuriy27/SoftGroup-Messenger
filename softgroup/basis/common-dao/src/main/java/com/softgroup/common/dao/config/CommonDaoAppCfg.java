@@ -47,7 +47,7 @@ public class CommonDaoAppCfg {
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/messenger");
         dataSource.setUsername( "postgres" );
         dataSource.setPassword( "root" );
         return dataSource;

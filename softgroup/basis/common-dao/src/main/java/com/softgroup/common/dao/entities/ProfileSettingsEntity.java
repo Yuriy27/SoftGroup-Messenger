@@ -20,7 +20,7 @@ public class ProfileSettingsEntity
     @Column(name = "settings_data")
     private String settingsData;
 
-    @OneToOne (fetch = FetchType.EAGER)
+    @OneToOne (fetch = FetchType.EAGER, mappedBy = "settingsEntity")
     private ProfileEntity profile;
 
     public String getSettingsData() {

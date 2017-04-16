@@ -253,10 +253,6 @@
 			<version>1.7.5</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.softgroup</groupId>
-			<artifactId>common-protocol</artifactId>
-		</dependency>
 
 	</dependencies>
 

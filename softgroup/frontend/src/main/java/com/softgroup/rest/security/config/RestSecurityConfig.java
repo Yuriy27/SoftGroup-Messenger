@@ -20,6 +20,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class RestSecurityConfig
         extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private TokenFilter tokenFilter;
+
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/api/public/**");
@@ -28,7 +31,7 @@ public class RestSecurityConfig
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests().anyRequest().authenticated();
-        http.addFilterBefore(new TokenFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
 }

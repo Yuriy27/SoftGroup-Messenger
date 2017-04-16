@@ -1,8 +1,10 @@
 package com.softgroup.rest.config;
 
 import com.softgroup.authorization.impl.config.AuthorizationImplCfg;
+import com.softgroup.common.cache.config.CacheCfg;
 import com.softgroup.common.datamapper.configuration.DataMapperAppCfg;
 import com.softgroup.common.router.config.CommonRouterCfg;
+import com.softgroup.common.token.config.TokenCfg;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
@@ -18,7 +20,9 @@ import org.springframework.context.annotation.Import;
 @Import(value = {
         DataMapperAppCfg.class,
         CommonRouterCfg.class,
-        AuthorizationImplCfg.class
+        AuthorizationImplCfg.class,
+        CacheCfg.class,
+        TokenCfg.class
 })
 public class RestApplicationConfiguration {
 }

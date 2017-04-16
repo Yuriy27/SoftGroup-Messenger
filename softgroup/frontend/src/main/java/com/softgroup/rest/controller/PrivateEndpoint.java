@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by yuriy27 on 08.04.17.
  */
 @RestController
-@RequestMapping(value = "api/private", method = RequestMethod.POST)
+@RequestMapping(value = "/api/private", method = RequestMethod.POST)
 public class PrivateEndpoint {
 
     @Autowired

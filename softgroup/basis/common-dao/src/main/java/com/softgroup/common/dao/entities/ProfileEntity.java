@@ -36,7 +36,8 @@ public class ProfileEntity
     @Column(name = "avatar_uri")
     private String avatarUri;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "profile_settings_id")
     private ProfileSettingsEntity settingsEntity;
 
     public String getPhoneNumber() {
