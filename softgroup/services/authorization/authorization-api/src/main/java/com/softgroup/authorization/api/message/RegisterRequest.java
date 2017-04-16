@@ -10,11 +10,21 @@ public class RegisterRequest implements RequestData{
 
 	private static final long serialVersionUID = -645554380912935546L;
 
+	private String name;
+
 	private String phoneNumber;
 
 	private String localeCode;
 
 	private String deviceId;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public String getPhoneNumber() {
 		return phoneNumber;
