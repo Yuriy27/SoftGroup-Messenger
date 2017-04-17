@@ -43,15 +43,10 @@ public class SmsConfirmHandler
     public Response<SmsConfirmResponse> doHandle(Request<SmsConfirmRequest> msg) {
         Response<SmsConfirmResponse> response = new Response<>();
         response.setHeader(msg.getHeader());
-
         ResponseStatus status = new ResponseStatus();
-
         SmsConfirmRequest req = msg.getData();
-
         SmsConfirmResponse resp = new SmsConfirmResponse();
-
         RegisterInfo info = cacheService.get(req.getRegistrationRequestUuid());
-
         if (info != null && req.getAuthCode().equals(info.getAuthCode())) {
             String profileId = saveToDb(info).getId();
             resp.setDeviceToken(tokenProvider.generateToken(info.getDeviceId(), profileId, TokenType.DEVICE));
@@ -61,7 +56,6 @@ public class SmsConfirmHandler
             status.setCode(422);
             status.setMessage("Not valid data in request");
         }
-
         response.setData(resp);
         response.setStatus(status);
 

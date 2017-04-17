@@ -30,11 +30,8 @@ public class LoginRequestHandler
     public Response<LoginResponse> doHandle(Request<LoginRequest> msg) {
         Response<LoginResponse> response = new Response<>();
         response.setHeader(msg.getHeader());
-
         ResponseStatus status = new ResponseStatus();
-
         LoginResponse resp = new LoginResponse();
-
         String deviceToken = msg.getData().getDeviceToken();
         if (tokenProvider.getTokenType(deviceToken).equals(TokenType.DEVICE)) {
             resp.setToken(getSessionTokenFromDevice(deviceToken));
@@ -44,7 +41,6 @@ public class LoginRequestHandler
             status.setCode(422);
             status.setMessage("Not valid data in request");
         }
-
         response.setData(resp);
         response.setStatus(status);
 

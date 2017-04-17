@@ -34,13 +34,9 @@ public class RegisterRequestHandler
     public Response<RegisterResponse> doHandle(Request<RegisterRequest> msg) {
         Response<RegisterResponse> response = new Response<>();
         response.setHeader(msg.getHeader());
-
         ResponseStatus status = new ResponseStatus();
-
         RegisterResponse reg = new RegisterResponse();
-
         RegisterInfo info = getRegisterInfo(msg.getData());
-
         if (isNotNullData(info)) {
             String regUuid = UUID.randomUUID().toString();
             reg.setRegistrationRequestUuid(regUuid);
@@ -53,7 +49,6 @@ public class RegisterRequestHandler
             status.setCode(422);
             status.setMessage("Not valid data in request");
         }
-
         response.setData(reg);
         response.setStatus(status);
 
