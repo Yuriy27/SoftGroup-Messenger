@@ -20,7 +20,7 @@ public class LoadingCacheService
 
     private static final Long MAXIMUM_CACHE_SIZE = 1000l;
 
-    private static final Long EXPIRE = 1l;
+    private static final Long EXPIRE = 10l;
 
     private static LoadingCache<String, RegisterInfo> cache = CacheBuilder
             .newBuilder()

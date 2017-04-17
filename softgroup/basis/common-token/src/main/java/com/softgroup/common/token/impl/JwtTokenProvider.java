@@ -23,7 +23,7 @@ public class JwtTokenProvider
 
     private static final Long DEVICE_TOKEN_TIME = 1000l * 3600 * 24 * 365;
 
-    private static final Long SESSION_TOKEN_TIME = 1000l * 60 * 5;
+    private static final Long SESSION_TOKEN_TIME = 1000l * 3600 * 24;
 
     @Override
     public String generateToken(String deviceId, String profileId, TokenType type) {
