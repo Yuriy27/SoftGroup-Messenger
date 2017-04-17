@@ -12,6 +12,8 @@ import com.softgroup.common.token.api.TokenType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.security.SignatureException;
+
 /**
  * Created by yuriy on 28.02.17.
  */
@@ -33,11 +35,16 @@ public class LoginRequestHandler
         ResponseStatus status = new ResponseStatus();
         LoginResponse resp = new LoginResponse();
         String deviceToken = msg.getData().getDeviceToken();
-        if (tokenProvider.getTokenType(deviceToken).equals(TokenType.DEVICE)) {
-            resp.setToken(getSessionTokenFromDevice(deviceToken));
-            status.setCode(200);
-            status.setMessage("OK");
-        } else {
+        try {
+            if (tokenProvider.getTokenType(deviceToken).equals(TokenType.DEVICE)) {
+                resp.setToken(getSessionTokenFromDevice(deviceToken));
+                status.setCode(200);
+                status.setMessage("OK");
+            } else {
+                status.setCode(422);
+                status.setMessage("Not valid data in request");
+            }
+        } catch (Exception ex) {
             status.setCode(422);
             status.setMessage("Not valid data in request");
         }
