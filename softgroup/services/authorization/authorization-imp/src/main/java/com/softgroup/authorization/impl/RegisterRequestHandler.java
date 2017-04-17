@@ -7,6 +7,7 @@ import com.softgroup.common.cache.entity.RegisterInfo;
 import com.softgroup.common.cache.service.CacheService;
 import com.softgroup.common.protocol.Request;
 import com.softgroup.common.protocol.Response;
+import com.softgroup.common.protocol.ResponseStatus;
 import com.softgroup.common.router.api.AbstractRequestHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -34,6 +35,8 @@ public class RegisterRequestHandler
         Response<RegisterResponse> response = new Response<>();
         response.setHeader(msg.getHeader());
 
+        ResponseStatus status = new ResponseStatus();
+
         String regUuid = UUID.randomUUID().toString();
         RegisterInfo info = getRegisterInfo(msg.getData());
 
@@ -42,7 +45,11 @@ public class RegisterRequestHandler
         reg.setRegistrationTimeoutSec(10);
         reg.setAuthCode(info.getAuthCode());
 
+        status.setCode(200);
+        status.setMessage("OK");
+
         response.setData(reg);
+        response.setStatus(status);
 
         cacheService.put(regUuid, info);
 

@@ -5,6 +5,7 @@ import com.softgroup.authorization.api.message.LoginResponse;
 import com.softgroup.authorization.api.router.AuthorizationRequestHandler;
 import com.softgroup.common.protocol.Request;
 import com.softgroup.common.protocol.Response;
+import com.softgroup.common.protocol.ResponseStatus;
 import com.softgroup.common.router.api.AbstractRequestHandler;
 import org.springframework.stereotype.Component;
 
@@ -21,12 +22,17 @@ public class LoginRequestHandler
     }
 
     public Response<LoginResponse> doHandle(Request<LoginRequest> msg) {
-        Response<LoginResponse> resp = new Response<LoginResponse>();
-        resp.setHeader(msg.getHeader());
+        Response<LoginResponse> response = new Response<>();
+        response.setHeader(msg.getHeader());
+
+        ResponseStatus status = new ResponseStatus();
+
         LoginResponse loginResponse = new LoginResponse();
         loginResponse.setToken("some token");
-        resp.setData(loginResponse);
-        return resp;
+
+        response.setData(loginResponse);
+
+        return response;
     }
 
 }
