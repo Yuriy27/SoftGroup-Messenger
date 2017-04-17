@@ -37,23 +37,35 @@ public class RegisterRequestHandler
 
         ResponseStatus status = new ResponseStatus();
 
-        String regUuid = UUID.randomUUID().toString();
+        RegisterResponse reg = new RegisterResponse();
+
         RegisterInfo info = getRegisterInfo(msg.getData());
 
-        RegisterResponse reg = new RegisterResponse();
-        reg.setRegistrationRequestUuid(regUuid);
-        reg.setRegistrationTimeoutSec(10);
-        reg.setAuthCode(info.getAuthCode());
-
-        status.setCode(200);
-        status.setMessage("OK");
+        if (isNotNullData(info)) {
+            String regUuid = UUID.randomUUID().toString();
+            reg.setRegistrationRequestUuid(regUuid);
+            reg.setRegistrationTimeoutSec(10);
+            reg.setAuthCode(info.getAuthCode());
+            cacheService.put(regUuid, info);
+            status.setCode(200);
+            status.setMessage("OK");
+        } else {
+            status.setCode(422);
+            status.setMessage("Not valid data in request");
+        }
 
         response.setData(reg);
         response.setStatus(status);
 
-        cacheService.put(regUuid, info);
-
         return response;
+    }
+
+    private boolean isNotNullData(RegisterInfo info) {
+        return info.getAuthCode() != null
+                && info.getDeviceId() != null
+                && info.getLocaleCode() != null
+                && info.getName() != null
+                && info.getPhoneNumber() != null;
     }
 
     private RegisterInfo getRegisterInfo(RegisterRequest req) {
