@@ -3,7 +3,7 @@ package com.softgroup.common.protocol;
 /**
  * Created by yuriy27 on 18.04.17.
  */
-public enum Statuses {
+public enum HttpStatus {
 
     SUCCESS(200, "Ok"),
     BAD_REQUEST(400, "Bad request"),
@@ -19,7 +19,7 @@ public enum Statuses {
 
     private String message;
 
-    Statuses(int code, String message) {
+    HttpStatus(int code, String message) {
         this.code = code;
         this.message = message;
     }

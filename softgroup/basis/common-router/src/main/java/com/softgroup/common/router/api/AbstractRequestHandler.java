@@ -7,6 +7,7 @@ import com.softgroup.common.protocol.Request;
 import com.softgroup.common.protocol.RequestData;
 import com.softgroup.common.protocol.Response;
 import com.softgroup.common.protocol.ResponseData;
+import com.softgroup.common.router.factory.impl.ResponseFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +17,9 @@ import java.util.Map;
 
 public abstract class AbstractRequestHandler<T extends RequestData, R extends ResponseData>
 		implements RequestHandler {
+
+	@Autowired
+	private ResponseFactory<T, R> responseFactory;
 
 	private final Class<T> parameter = (Class<T>)((ParameterizedType) getClass()
 			.getGenericSuperclass())
