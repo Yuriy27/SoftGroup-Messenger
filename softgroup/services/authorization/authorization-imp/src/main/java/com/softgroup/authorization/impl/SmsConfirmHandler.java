@@ -8,6 +8,7 @@ import com.softgroup.common.cache.service.CacheService;
 import com.softgroup.common.dao.entities.ProfileEntity;
 import com.softgroup.common.dao.entities.ProfileSettingsEntity;
 import com.softgroup.common.dao.service.ProfileService;
+import com.softgroup.common.protocol.HttpStatus;
 import com.softgroup.common.protocol.Request;
 import com.softgroup.common.protocol.Response;
 import com.softgroup.common.protocol.ResponseStatus;
@@ -41,25 +42,16 @@ public class SmsConfirmHandler
 
     @Override
     public Response<SmsConfirmResponse> doHandle(Request<SmsConfirmRequest> msg) {
-        Response<SmsConfirmResponse> response = new Response<>();
-        response.setHeader(msg.getHeader());
-        ResponseStatus status = new ResponseStatus();
         SmsConfirmRequest req = msg.getData();
         SmsConfirmResponse resp = new SmsConfirmResponse();
         RegisterInfo info = cacheService.get(req.getRegistrationRequestUuid());
         if (info != null && req.getAuthCode().equals(info.getAuthCode())) {
             String profileId = saveToDb(info).getId();
             resp.setDeviceToken(tokenProvider.generateToken(info.getDeviceId(), profileId, TokenType.DEVICE));
-            status.setCode(200);
-            status.setMessage("OK");
-        } else {
-            status.setCode(422);
-            status.setMessage("Not valid data in request");
+            return responseFactory.build(msg, resp);
         }
-        response.setData(resp);
-        response.setStatus(status);
 
-        return response;
+        return responseFactory.build(msg, resp, HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
     private ProfileEntity saveToDb(RegisterInfo info) {

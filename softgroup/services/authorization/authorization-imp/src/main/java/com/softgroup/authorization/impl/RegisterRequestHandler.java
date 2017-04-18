@@ -5,6 +5,7 @@ import com.softgroup.authorization.api.message.RegisterResponse;
 import com.softgroup.authorization.api.router.AuthorizationRequestHandler;
 import com.softgroup.common.cache.entity.RegisterInfo;
 import com.softgroup.common.cache.service.CacheService;
+import com.softgroup.common.protocol.HttpStatus;
 import com.softgroup.common.protocol.Request;
 import com.softgroup.common.protocol.Response;
 import com.softgroup.common.protocol.ResponseStatus;
@@ -32,9 +33,6 @@ public class RegisterRequestHandler
 
     @Override
     public Response<RegisterResponse> doHandle(Request<RegisterRequest> msg) {
-        Response<RegisterResponse> response = new Response<>();
-        response.setHeader(msg.getHeader());
-        ResponseStatus status = new ResponseStatus();
         RegisterResponse reg = new RegisterResponse();
         RegisterInfo info = getRegisterInfo(msg.getData());
         if (isNotNullData(info)) {
@@ -43,16 +41,10 @@ public class RegisterRequestHandler
             reg.setRegistrationTimeoutSec(10);
             reg.setAuthCode(info.getAuthCode());
             cacheService.put(regUuid, info);
-            status.setCode(200);
-            status.setMessage("OK");
-        } else {
-            status.setCode(422);
-            status.setMessage("Not valid data in request");
+            return responseFactory.build(msg, reg);
         }
-        response.setData(reg);
-        response.setStatus(status);
 
-        return response;
+        return responseFactory.build(msg, reg, HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
     private boolean isNotNullData(RegisterInfo info) {

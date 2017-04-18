@@ -3,6 +3,7 @@ package com.softgroup.authorization.impl;
 import com.softgroup.authorization.api.message.LoginRequest;
 import com.softgroup.authorization.api.message.LoginResponse;
 import com.softgroup.authorization.api.router.AuthorizationRequestHandler;
+import com.softgroup.common.protocol.HttpStatus;
 import com.softgroup.common.protocol.Request;
 import com.softgroup.common.protocol.Response;
 import com.softgroup.common.protocol.ResponseStatus;
@@ -30,28 +31,18 @@ public class LoginRequestHandler
     }
 
     public Response<LoginResponse> doHandle(Request<LoginRequest> msg) {
-        Response<LoginResponse> response = new Response<>();
-        response.setHeader(msg.getHeader());
-        ResponseStatus status = new ResponseStatus();
         LoginResponse resp = new LoginResponse();
         String deviceToken = msg.getData().getDeviceToken();
         try {
             if (tokenProvider.getTokenType(deviceToken).equals(TokenType.DEVICE)) {
                 resp.setToken(getSessionTokenFromDevice(deviceToken));
-                status.setCode(200);
-                status.setMessage("OK");
-            } else {
-                status.setCode(422);
-                status.setMessage("Not valid data in request");
+                return responseFactory.build(msg, resp);
             }
         } catch (Exception ex) {
-            status.setCode(422);
-            status.setMessage("Not valid data in request");
+            return responseFactory.build(msg, resp, HttpStatus.UNPROCESSABLE_ENTITY);
         }
-        response.setData(resp);
-        response.setStatus(status);
 
-        return response;
+        return responseFactory.build(msg, resp, HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
     private String getSessionTokenFromDevice(String deviceToken) {

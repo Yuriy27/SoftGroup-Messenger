@@ -19,7 +19,7 @@ public abstract class AbstractRequestHandler<T extends RequestData, R extends Re
 		implements RequestHandler {
 
 	@Autowired
-	private ResponseFactory<T, R> responseFactory;
+	protected ResponseFactory<T, R> responseFactory;
 
 	private final Class<T> parameter = (Class<T>)((ParameterizedType) getClass()
 			.getGenericSuperclass())
