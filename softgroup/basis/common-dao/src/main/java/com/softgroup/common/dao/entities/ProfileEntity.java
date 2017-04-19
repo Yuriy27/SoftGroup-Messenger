@@ -36,8 +36,8 @@ public class ProfileEntity
     @Column(name = "avatar_uri")
     private String avatarUri;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "profile")
-    private List<ProfileSettingsEntity> settingsEntities;
+    @OneToOne(fetch = FetchType.EAGER)
+    private ProfileSettingsEntity settingsEntity;
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -87,12 +87,11 @@ public class ProfileEntity
         this.avatarUri = avatarUri;
     }
 
-    public List<ProfileSettingsEntity> getSettingsEntities() {
-        return settingsEntities;
+    public ProfileSettingsEntity getSettingsEntities() {
+        return settingsEntity;
     }
 
-    public void setSettingsEntities(List<ProfileSettingsEntity> settingsEntities) {
-        this.settingsEntities = settingsEntities;
+    public void setSettingsEntities(ProfileSettingsEntity settingsEntity) {
+        this.settingsEntity = settingsEntity;
     }
-
 }

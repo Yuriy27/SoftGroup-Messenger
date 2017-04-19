@@ -1,5 +1,6 @@
 package com.softgroup.rest.config;
 
+import com.softgroup.rest.security.config.RestSecurityConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
@@ -13,7 +14,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
     @Override
     public Class<?>[] getRootConfigClasses() {
-        return new Class<?>[]{RestApplicationConfiguration.class};
+        return new Class<?>[]{RestApplicationConfiguration.class, RestSecurityConfig.class};
     }
 
     @Override
