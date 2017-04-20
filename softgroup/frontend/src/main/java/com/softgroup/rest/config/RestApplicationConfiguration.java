@@ -6,6 +6,7 @@ import com.softgroup.common.dao.config.CommonDaoAppCfg;
 import com.softgroup.common.datamapper.configuration.DataMapperAppCfg;
 import com.softgroup.common.router.config.CommonRouterCfg;
 import com.softgroup.common.token.config.TokenCfg;
+import com.softgroup.profile.impl.config.ProfileImplCfg;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
@@ -22,6 +23,7 @@ import org.springframework.context.annotation.Import;
         DataMapperAppCfg.class,
         CommonRouterCfg.class,
         AuthorizationImplCfg.class,
+        ProfileImplCfg.class,
         CacheCfg.class,
         TokenCfg.class,
         CommonDaoAppCfg.class

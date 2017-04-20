@@ -1,7 +1,7 @@
 package com.softgroup.profile.api.message;
 
 import com.softgroup.common.protocol.ResponseData;
-import com.softgroup.profile.model.Profile;
+import com.softgroup.profile.api.dto.Profile;
 
 /**
  * Created by yuriy on 24.02.17.

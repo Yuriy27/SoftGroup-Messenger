@@ -1,7 +1,7 @@
 package com.softgroup.profile.api.message;
 
 import com.softgroup.common.protocol.RequestData;
-import com.softgroup.profile.model.Contact;
+import com.softgroup.profile.api.dto.ContactDto;
 
 import java.util.List;
 
@@ -10,23 +10,23 @@ import java.util.List;
  */
 public class ContactsSyncRequest implements RequestData {
 
-    private List<Contact> addedContacts;
+    private List<ContactDto> addedContactDtos;
 
-    private List<Contact> removedContacts;
+    private List<ContactDto> removedContactDtos;
 
-    public List<Contact> getAddedContacts() {
-        return addedContacts;
+    public List<ContactDto> getAddedContactDtos() {
+        return addedContactDtos;
     }
 
-    public void setAddedContacts(List<Contact> addedContacts) {
-        this.addedContacts = addedContacts;
+    public void setAddedContactDtos(List<ContactDto> addedContactDtos) {
+        this.addedContactDtos = addedContactDtos;
     }
 
-    public List<Contact> getRemovedContacts() {
-        return removedContacts;
+    public List<ContactDto> getRemovedContactDtos() {
+        return removedContactDtos;
     }
 
-    public void setRemovedContacts(List<Contact> removedContacts) {
-        this.removedContacts = removedContacts;
+    public void setRemovedContactDtos(List<ContactDto> removedContactDtos) {
+        this.removedContactDtos = removedContactDtos;
     }
 }

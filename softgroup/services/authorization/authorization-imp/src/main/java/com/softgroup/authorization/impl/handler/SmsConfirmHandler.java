@@ -1,4 +1,4 @@
-package com.softgroup.authorization.impl;
+package com.softgroup.authorization.impl.handler;
 
 import com.softgroup.authorization.api.message.SmsConfirmRequest;
 import com.softgroup.authorization.api.message.SmsConfirmResponse;

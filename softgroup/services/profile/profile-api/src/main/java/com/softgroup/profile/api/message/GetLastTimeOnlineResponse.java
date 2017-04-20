@@ -1,7 +1,7 @@
 package com.softgroup.profile.api.message;
 
 import com.softgroup.common.protocol.ResponseData;
-import com.softgroup.profile.model.ProfileSettings;
+import com.softgroup.profile.api.dto.ProfileSettings;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.softgroup.authorization.impl;
+package com.softgroup.authorization.impl.handler;
 
 import com.softgroup.authorization.api.message.LoginRequest;
 import com.softgroup.authorization.api.message.LoginResponse;

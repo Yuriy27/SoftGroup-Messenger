@@ -2,12 +2,16 @@ package com.softgroup.rest.controller;
 
 import com.softgroup.common.datamapper.DataMapper;
 import com.softgroup.common.protocol.FrontRequest;
+import com.softgroup.common.protocol.RoutedData;
 import com.softgroup.common.router.impl.FirstRouter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.security.Security;
 
 /**
  * Created by yuriy27 on 08.04.17.
@@ -25,6 +29,7 @@ public class PrivateEndpoint {
     @RequestMapping(value = "/route", method = RequestMethod.POST)
     public String processRequest(@RequestBody String body) {
         FrontRequest request = dataMapper.mapData(body, FrontRequest.class);
+        request.setRoutedData((RoutedData) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         return dataMapper.objectToString(firstRouter.handle(request));
     }
 

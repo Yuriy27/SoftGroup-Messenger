@@ -1,4 +1,4 @@
-package com.softgroup.profile.model;
+package com.softgroup.profile.api.dto;
 
 /**
  * Created by yuriy on 24.02.17.
