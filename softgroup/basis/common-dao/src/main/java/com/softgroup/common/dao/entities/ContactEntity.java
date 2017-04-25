@@ -2,10 +2,9 @@ package com.softgroup.common.dao.entities;
 
 import com.softgroup.common.dao.api.BaseEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * Created by yuriy27 on 20.04.17.
@@ -14,11 +13,15 @@ import java.io.Serializable;
 @Table(name = "contacts")
 public class ContactEntity extends BaseEntity implements Serializable {
 
+    @Column(name = "profile_id")
+    private String profileId;
+
     @Column(name = "name")
     private String name;
 
-    @Column(name = "phone_number")
-    private String phoneNumber;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "contact_id")
+    private Set<NumberEntity> phoneNumbers;
 
     public String getName() {
         return name;
@@ -28,12 +31,20 @@ public class ContactEntity extends BaseEntity implements Serializable {
         this.name = name;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public Set<NumberEntity> getPhoneNumbers() {
+        return phoneNumbers;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhoneNumbers(Set<NumberEntity> phoneNumbers) {
+        this.phoneNumbers = phoneNumbers;
+    }
+
+    public String getProfileId() {
+        return profileId;
+    }
+
+    public void setProfileId(String profileId) {
+        this.profileId = profileId;
     }
 
     @Override
@@ -43,14 +54,25 @@ public class ContactEntity extends BaseEntity implements Serializable {
 
         ContactEntity that = (ContactEntity) o;
 
+        if (profileId != null ? !profileId.equals(that.profileId) : that.profileId != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        return phoneNumber != null ? phoneNumber.equals(that.phoneNumber) : that.phoneNumber == null;
+        return phoneNumbers != null ? phoneNumbers.equals(that.phoneNumbers) : that.phoneNumbers == null;
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
+        int result = profileId != null ? profileId.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (phoneNumbers != null ? phoneNumbers.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "ContactEntity{" +
+                "profileId='" + profileId + '\'' +
+                ", name='" + name + '\'' +
+                ", phoneNumbers=" + phoneNumbers +
+                '}';
     }
 }
